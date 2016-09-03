@@ -13,13 +13,13 @@ import Views from 'koa-views';
 import KoaBodyParser from 'koa-better-body';
 import Session from 'koa2-cookie-session';
 import Mongoose from 'mongoose';
+Mongoose.Promise = Promise;
 import cors from 'koa-cors';
 import response from './middleware/response.js';
 
 // koa1中间件转换
 import convert from 'koa-convert';
 
-// all routers
 import routers from './routers';
 
 import env from './config/env.config.js';
