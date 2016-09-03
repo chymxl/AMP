@@ -8,9 +8,13 @@ import { mixin } from '../utils/tools.js';
 
 import commentRegex from 'comment-regex';
 
+import mongoose from 'mongoose'
+
 const Mock = Router({
 	prefix: '/mock'
 });
+
+var ObjectId = mongoose.Types.ObjectId;
 
 const formatRequestUrl = (url) => {
 	let result = {};
@@ -65,7 +69,7 @@ Mock.all('*', async (ctx, next) => {
 	const Url = global.dbHandle.getModel('urls');
 
 	const result = await Url.find({
-		parent_project: apiDeatil.project_id,
+		parent_project: new ObjectId(apiDeatil.project_id),
 		url: apiDeatil.api_url,
 		method: ctx.method.toLocaleLowerCase()
 	});

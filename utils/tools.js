@@ -26,7 +26,11 @@ export const unique = (array) => {
 
 export const mixin = (source, target) => {
 	for (var i in target) {
-		if (target.hasOwnProperty(i)) {
+		//maybe object is created in this way Object.create(null)
+		// if (target.hasOwnProperty(i)) {
+		// 	source[i] = target[i];
+		// }
+		if(Object.prototype.hasOwnProperty.call(target, i)){
 			source[i] = target[i];
 		}
 	}
